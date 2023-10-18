@@ -5,7 +5,7 @@ const { Op } = require("sequelize");
 
 const createError = require('http-errors');
 const paginate = require('express-paginate')
-const { getAllMovis, getMovieById, createMovie, updateMovie } = require("../services/movies.services");
+const { getAllMovis, getMovieById, createMovie, updateMovie, deleteMovie } = require("../services/movies.services");
 
 const moviesController = {
   list: async (req, res) => {
@@ -51,13 +51,12 @@ const moviesController = {
         }
   },
   create: async (req, res) => {
-    try {
+      try {
 
       const { title, release_date, awards, rating, length, genre_id, actors } = req.body;
-
       
       
-     if(([title, release_date, awards, rating]).includes('' || undefined)){
+     if([title, release_date, awards, rating].includes('' || undefined)){
       throw createError(400,'Los campos title, release_date, awards, rating son obligatorios')
      }
 
@@ -92,12 +91,13 @@ const moviesController = {
     try {
 
       const movieUpdated = await updateMovie(req.params.id, req.body);
+      
 
 
       return res.status(200).json({
         ok: true,
         data: 'Pelicula actualizada con exito',
-        url : `${req.protocol}://${req.get('host')}/api/v1/movies/${movieUpdated.id}`
+        url : `${req.protocol}://${req.get('host')}/api/v1/movies/${req.params.id}`
       });
       
     } catch (error) {
@@ -113,13 +113,12 @@ const moviesController = {
   destroy: async (req,res) => {
     try {
 
-      const movieUpdate = await updateMovie(req.params.id, req.body);
+      const movieUpdate = await deleteMovie(req.params.id, req.body);
 
 
       return res.status(200).json({
         ok: true,
         data: 'Pelicula eliminada con exito',
-        url : `${req.protocol}://${req.get('host')}/api/v1/movies/${movieUpdate.id}`
       });
       
     } catch (error) {

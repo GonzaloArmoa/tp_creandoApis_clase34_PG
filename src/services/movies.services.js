@@ -101,6 +101,7 @@ const getMovieById = async (id) => {
     };
 
     const updateMovie = async (id, dataMovie) => {
+
         try {
 
             const {title, awards, rating, length, release_date, genre_id, actors} = dataMovie
