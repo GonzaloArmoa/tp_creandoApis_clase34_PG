@@ -10,7 +10,8 @@ const { getAllMovis, getMovieById, createMovie, updateMovie, deleteMovie } = req
 const moviesController = {
   list: async (req, res) => {
     try {
-      const { movies, total } = await getAllMovis(req.query.limit, req.skip);
+      const {keyword} = req.query
+      const { movies, total } = await getAllMovis(req.query.limit, req.skip, keyword);
       const pagesCount = Math.ceil(total / req.query.limit)
       const currentPage = req.query.page;
       const pages = paginate.getArrayPages(req)(pagesCount,pagesCount,currentPage)
