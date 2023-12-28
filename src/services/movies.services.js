@@ -32,7 +32,9 @@ const getAllMovis = async (limit,offset,keyword) => {
             ...options           
         })
 
-        const total = await db.Movie.count()
+        const total = await db.Movie.count({
+          ...options
+        })
       
         return {
             movies,
