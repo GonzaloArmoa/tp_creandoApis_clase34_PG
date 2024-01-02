@@ -149,7 +149,9 @@ const getMovieById = async (id) => {
                 })
             }
             
-            return null
+            return {
+                id
+            };
             
         } catch (error) {
             throw{
