@@ -75,7 +75,10 @@ const moviesController = {
       return res.status(200).json({
         ok: true,
         data: 'Pelicula creada con exito',
-        url : `${req.protocol}://${req.get('host')}/api/v1/movies/${newMovie.id}`
+        url : `${req.protocol}://${req.get('host')}/api/v1/movies/${
+          newMovie.id
+        }`,
+        data : newMovie
       });
 
    } catch (error) {
