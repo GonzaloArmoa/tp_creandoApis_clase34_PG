@@ -102,7 +102,6 @@ const moviesController = {
         ok: true,
         msg: 'Pelicula actualizada con exito',
         url : `${req.protocol}://${req.get('host')}/api/v1/movies/${req.params.id}`,
-        data: movie
       });
       
     } catch (error) {
