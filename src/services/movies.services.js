@@ -102,7 +102,7 @@ const getMovieById = async (id) => {
                 })
               }
 
-              return newMovie
+              return getMovieById(newMovie.id);
 
         } catch(error) {
             throw{
