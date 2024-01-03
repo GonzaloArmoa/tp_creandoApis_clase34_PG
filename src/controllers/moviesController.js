@@ -74,7 +74,7 @@ const moviesController = {
 
       return res.status(200).json({
         ok: true,
-        data: 'Pelicula creada con exito',
+        msg: 'Pelicula creada con exito',
         url : `${req.protocol}://${req.get('host')}/api/v1/movies/${
           newMovie.id
         }`,
@@ -100,7 +100,7 @@ const moviesController = {
 
       return res.status(200).json({
         ok: true,
-        data: 'Pelicula actualizada con exito',
+        msg: 'Pelicula actualizada con exito',
         url : `${req.protocol}://${req.get('host')}/api/v1/movies/${req.params.id}`
       });
       
@@ -122,7 +122,7 @@ const moviesController = {
 
       return res.status(200).json({
         ok: true,
-        data: 'Pelicula eliminada con exito',
+        msg: 'Pelicula eliminada con exito',
       });
       
     } catch (error) {
