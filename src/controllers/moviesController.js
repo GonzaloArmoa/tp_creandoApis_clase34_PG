@@ -101,7 +101,8 @@ const moviesController = {
       return res.status(200).json({
         ok: true,
         msg: 'Pelicula actualizada con exito',
-        url : `${req.protocol}://${req.get('host')}/api/v1/movies/${req.params.id}`
+        url : `${req.protocol}://${req.get('host')}/api/v1/movies/${req.params.id}`,
+        data: movie
       });
       
     } catch (error) {
